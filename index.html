@@ -1,0 +1,435 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nostra</title>
+    <!-- Google font style sheet -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- My Stylehsheet -->
+    <link rel="stylesheet" href="style.css" />
+    <!-- Font Awesome CDN Link -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- Tailwind Css -->
+    <link
+      href="
+https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css
+"
+      rel="stylesheet"
+    />
+    <style>
+      .mobile-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 80%;
+        height: 100vh;
+        background: white;
+        z-index: 20;
+        transition: right 0.3s ease;
+        box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+        overflow-y: auto;
+      }
+      .mobile-menu.active {
+        right: 0;
+      }
+      .mobile-menu-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 15;
+        display: none;
+      }
+      .mobile-menu-overlay.active {
+        display: block;
+      }
+      .mobile-menu ul {
+        list-style: none;
+        padding: 20px 0;
+      }
+      .mobile-menu li {
+        padding: 15px 20px;
+        border-bottom: 1px solid #e5e7eb;
+      }
+      .mobile-menu a {
+        text-decoration: none;
+        font-weight: 600;
+        display: block;
+      }
+    </style>
+  </head>
+  <body class="font-poppins">
+    <!-- Top Bar -->
+    <section
+      id="top-bar"
+      class="bg-purple-200 p-3 items-center flex justify-center items-center shadow-xl top-0 z-10 gap-20"
+    >
+      <h2
+        class="whitespace-nowrap inline-block animate-scroll text-xl text-pink-500"
+      >
+        Sign Up and Get <span class="font-bold">Gifts</span> for your first
+        Order!
+      </h2>
+      <span class="close-tag absolute right-4">X</span>
+    </section>
+
+    <!-- Nav Bar -->
+    <nav
+      class="p-3 flex justify-between items-center bg-white position: sticky top-0 z-10"
+    >
+      <a href="index.html" class="text-3xl font-extrabold text-pink-500">Nostra</a>
+
+      <svg
+        id="menuicon"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        class="w-8 h-8 md:hidden text-pink-500"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+        />
+      </svg>
+
+      <ul class="flex gap-10 text-gray-600 hidden md:flex">
+        <li>
+          <a href="index.html" class="hover:underline hover:text-black text-pink-500">Home</a>
+        </li>
+        <li>
+          <a
+            href="index.html#new-arrivals-section"
+            class="hover:underline hover:text-black text-purple-500"
+            >New Arrival</a
+          >
+        </li>
+        <li>
+          <a
+            href="index.html#most-wanted-section"
+            class="hover:underline hover:text-black text-pink-500"
+            >Most Wanted</a
+          >
+        </li>
+        <li>
+          <a
+            href="collections.html"
+            class="hover:underline hover:text-black text-purple-500"
+            >Collections</a
+          >
+        </li>
+        <li>
+          <a
+            href="contact.html"
+            class="hover:underline hover:text-black text-pink-500"
+            >Contact Us</a
+          >
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay" id="menuOverlay"></div>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+      <ul>
+        <li>
+          <a href="index.html" class="text-pink-500">Home</a>
+        </li>
+        <li>
+          <a href="index.html#new-arrivals-section" class="text-purple-500">New Arrival</a>
+        </li>
+        <li>
+          <a href="index.html#most-wanted-section" class="text-pink-500">Most Wanted</a>
+        </li>
+        <li>
+          <a href="collections.html" class="text-purple-500">Collections</a>
+        </li>
+        <li>
+          <a href="contact.html" class="text-pink-500">Contact Us</a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- home content -->
+    <section class="relative w-full overflow-hidden" style="height: 400px;">
+      <div class="relative w-full h-full overflow-hidden">
+        <div class="flex w-full h-full" id="headerimage" style="transition: transform 0.5s ease-in-out;">
+          <img src="./images/headerimage1.jpg" alt="image" />
+          <img src="./images/headerimage2.jpg" alt="image"  />
+          <img src="./images/headerimage3.jpg" alt="image" />
+          <img src="./images/headerimage4.jpg" alt="image" />
+          <img src="./images/headerimage5.jpg" alt="image" />
+          <img src="./images/headerimage6.jpg" alt="image" />
+        </div>
+      </div>
+     
+      <!-- Overlay -->
+      <div class="absolute top-0 left-0 w-full h-full bg-black opacity-50 z-10"></div>
+      
+      <!-- Content -->
+      <div class="absolute inset-0 flex flex-col justify-center items-center text-white z-20 gap-3">
+        <h1 class="text-6xl font-extrabold mt-5">Level up your style with our</h1>
+        <h2 class="text-xl font-bold">Stunning Collections</h2>
+        <button class="bg-white text-black p-2">Shop Now →</button>
+      </div>
+      
+      <!-- Navigation Buttons -->
+      <button class="absolute left-5 top-1/2 -translate-y-1/2 text-white text-7xl z-30 arrow-left">
+        ❮
+      </button>
+      <button class="absolute right-5 top-1/2 -translate-y-1/2 text-white text-7xl z-30 arrow-right">
+        ❯
+      </button>
+    </section>
+<!-- Brand & Features -->
+    <section class="brands-section px-6 py-12">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="brands-title text-2xl font-extrabold mb-6">Brands</h2>
+
+        <ul class="brand-list flex items-center justify-between gap-6 mb-12">
+          <li class="brand-item">
+            <div class="brand-icon"> <i class="fa-solid fa-p"></i> </div>
+            <div class="brand-name">Puma</div>
+          </li>
+          <li class="brand-item">
+            <div class="brand-icon"> <i class="fa-solid fa-a"></i> </div>
+            <div class="brand-name">Adidas</div>
+          </li>
+          <li class="brand-item">
+            <div class="brand-icon"> <i class="fas fa-circle-notch"></i> </div>
+            <div class="brand-name">Simple</div>
+          </li>
+          <li class="brand-item">
+            <div class="brand-icon"> <i class="fas fa-leaf"></i> </div>
+            <div class="brand-name">Leaves</div>
+          </li>
+          <li class="brand-item">
+            <div class="brand-icon"> <i class="fab fa-behance"></i> </div>
+            <div class="brand-name">Behance</div>
+          </li>
+          <li class="brand-item">
+            <div class="brand-icon"> <i class="fab fa-twitch"></i> </div>
+            <div class="brand-name">Twitch</div>
+          </li>
+          <li class="brand-item">
+            <div class="brand-icon"> <i class="fas fa-leaf"></i> </div>
+            <div class="brand-name">Leaves</div>
+          </li>
+        </ul>
+        <div class="flex flex-item justify-between">
+          <div class="text-3xl font-bold">We Provide Best <br>
+Customer Experiences</div>
+<div class="text-xl">|| We ensure that our customer have the best shopping experience</div>
+        </div>
+
+        <div class="features-grid grid grid-cols-1 md:grid-cols-4 gap-6">
+          <div class="feature-card">
+            <div class="feature-icon"> <i class="fas fa-check-circle"></i> </div>
+            <h3 class="feature-title">Original Products</h3>
+            <p class="feature-desc">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Porro, consequuntur.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon"> <i class="fas fa-smile"></i> </div>
+            <h3 class="feature-title">Satisfaction Guarantee</h3>
+            <p class="feature-desc">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Porro, consequuntur.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon"> <i class="fas fa-paint-brush"></i> </div>
+            <h3 class="feature-title">New Arrival Everyday</h3>
+            <p class="feature-desc">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Porro, consequuntur.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon"> <i class="fas fa-truck"></i> </div>
+            <h3 class="feature-title">Fast & Free Shipping</h3>
+            <p class="feature-desc">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Porro, consequuntur.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- New Arrival Section -->
+    <section id="new-arrivals-section" class="new-arrivals-section px-6 py-12">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="new-arrivals-title text-3xl font-extrabold mb-8">New Arrivals</h2>
+
+        <div class="products-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="product-card">
+            <img src="./images/newarrival1.jpg" alt="New Arrival 1" />
+            <button class="product-btn">Shop Now →</button>
+          </div>
+          <div class="product-card">
+            <img src="./images/newarrival2.jpg" alt="New Arrival 2" />
+            <button class="product-btn">Shop Now →</button>
+          </div>
+          <div class="product-card">
+            <img src="./images/newarrival3.jpg" alt="New Arrival 3" />
+            <button class="product-btn">Shop Now →</button>
+          </div>
+          <div class="product-card">
+            <img src="./images/newarrival4.jpg" alt="New Arrival 4" />
+            <button class="product-btn">Shop Now →</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Most Wanted Section -->
+    <section id="most-wanted-section" class="most-wanted-section px-6 py-12 bg-gray-50">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="most-wanted-title text-3xl font-extrabold mb-8">Most Wanted</h2>
+
+        <div class="most-wanted-scroll overflow-x-auto pb-4">
+          <div class="most-wanted-container flex gap-6">
+            <div class="most-wanted-card">
+              <div class="card-badge">sale</div>
+              <img src="./images/mostwanted1.jpg" alt="Most Wanted 1" />
+              <button class="heart-btn" onclick="this.classList.toggle('active')">
+                <i class="far fa-heart"></i>
+              </button>
+            </div>
+            <div class="most-wanted-card">
+              <div class="card-badge">sale</div>
+              <img src="./images/mostwanted2.jpg" alt="Most Wanted 2" />
+              <button class="heart-btn" onclick="this.classList.toggle('active')">
+                <i class="far fa-heart"></i>
+              </button>
+            </div>
+            <div class="most-wanted-card">
+              <div class="card-badge">sale</div>
+              <img src="./images/mostwanted3.jpg" alt="Most Wanted 3" />
+              <button class="heart-btn" onclick="this.classList.toggle('active')">
+                <i class="far fa-heart"></i>
+              </button>
+            </div>
+            <div class="most-wanted-card">
+              <div class="card-badge">sale</div>
+              <img src="./images/mostwanted4.jpg" alt="Most Wanted 4" />
+              <button class="heart-btn" onclick="this.classList.toggle('active')">
+                <i class="far fa-heart"></i>
+              </button>
+            </div>
+            <div class="most-wanted-card">
+              <div class="card-badge">sale</div>
+              <img src="./images/mostwanted5.jpg" alt="Most Wanted 5" />
+              <button class="heart-btn" onclick="this.classList.toggle('active')">
+                <i class="far fa-heart"></i>
+              </button>
+            </div>
+            <div class="most-wanted-card">
+              <div class="card-badge">sale</div>
+              <img src="./images/mostwanted6.jpg" alt="Most Wanted 6" />
+              <button class="heart-btn" onclick="this.classList.toggle('active')">
+                <i class="far fa-heart"></i>
+              </button>
+            </div>
+            <div class="most-wanted-card">
+              <div class="card-badge">sale</div>
+              <img src="./images/mostwanted7.jpg" alt="Most Wanted 7" />
+              <button class="heart-btn" onclick="this.classList.toggle('active')">
+                <i class="far fa-heart"></i>
+              </button>
+            </div>
+            <div class="most-wanted-card">
+              <div class="card-badge">sale</div>
+              <img src="./images/mostwanted8.jpg" alt="Most Wanted 8" />
+              <button class="heart-btn" onclick="this.classList.toggle('active')">
+                <i class="far fa-heart"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Limited Offer Section -->
+    <section class="limited-offer-section px-4 py-12">
+      <div class="max-w-6xl mx-auto bg-pink-500 rounded-md p-8 flex flex-col md:flex-row items-center gap-8">
+        <div class="offer-image w-full md:w-1/2">
+          <img src="./images/limitedtimeoffer.jpg" alt="Limited Offer" />
+        </div>
+        <div class="offer-content w-full md:w-1/2 text-white">
+          <h2 class="offer-title text-4xl md:text-5xl font-extrabold mb-4">Limited Offer</h2>
+          <p class="offer-sub text-xl md:text-2xl font-bold mb-6">35% OFF on this for the first 30 Customers</p>
+          <button class="btn-offer">Shop Now →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter / Subscribe -->
+    <section class="newsletter-section px-6 py-12">
+      <div class="max-w-6xl mx-auto text-center">
+        <h2 class="newsletter-title text-4xl md:text-5xl font-extrabold mb-4">Join our News Letter</h2>
+        <p class="newsletter-sub text-xl md:text-2xl mb-6">Signup for our email newspaper to get exclusive discounts, updates, and more</p>
+
+        <form class="newsletter-form flex flex-col md:flex-row items-center justify-center gap-4" onsubmit="return false;">
+          <input type="email" class="newsletter-input" placeholder="Enter your email address" required />
+          <button class="newsletter-btn">Subscribe →</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-section px-6 py-12 bg-purple-200">
+      <div class="max-w-6xl mx-auto text-pink-500">
+        <h1 class="footer-logo text-4xl font-extrabold mb-4 text-pink-500">Nostra</h1>
+        <p class="footer-desc text-xl mb-6 text-pink-500">The Standard chunk of Lorem ipsum used since the 1500s is reproduced below for those interest</p>
+
+        <div class="footer-social flex items-center gap-8 mb-8 text-pink-500">
+          <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+        </div>
+
+        <div class="footer-copy text-2xl">@ 2026 Nostra.com</div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+      // Mobile Menu Toggle
+      const menuIcon = document.getElementById('menuicon');
+      const mobileMenu = document.getElementById('mobileMenu');
+      const menuOverlay = document.getElementById('menuOverlay');
+
+      // Toggle menu when hamburger icon is clicked
+      menuIcon.addEventListener('click', () => {
+        mobileMenu.classList.toggle('active');
+        menuOverlay.classList.toggle('active');
+      });
+
+      // Close menu when overlay is clicked
+      menuOverlay.addEventListener('click', () => {
+        mobileMenu.classList.remove('active');
+        menuOverlay.classList.remove('active');
+      });
+
+      // Close menu when a link is clicked
+      const mobileMenuLinks = document.querySelectorAll('.mobile-menu a');
+      mobileMenuLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.remove('active');
+          menuOverlay.classList.remove('active');
+        });
+      });
+    </script>
+  </body>
+</html>

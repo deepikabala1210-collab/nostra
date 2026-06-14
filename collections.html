@@ -1,0 +1,464 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Collections - Nostra</title>
+    <!-- Google font style sheet -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- My Stylehsheet -->
+    <link rel="stylesheet" href="style.css" />
+    <!-- Font Awesome CDN Link -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- Tailwind Css -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      .filter-section {
+        position: sticky;
+        top: 80px;
+      }
+      .product-card-img {
+        background: #f5f5f5;
+        aspect-ratio: 1;
+        overflow: hidden;
+      }
+      .product-card-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .checkbox-custom {
+        accent-color: #ff6fa3;
+      }
+      .mobile-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 80%;
+        height: 100vh;
+        background: white;
+        z-index: 20;
+        transition: right 0.3s ease;
+        box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+        overflow-y: auto;
+      }
+      .mobile-menu.active {
+        right: 0;
+      }
+      .mobile-menu-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 15;
+        display: none;
+      }
+      .mobile-menu-overlay.active {
+        display: block;
+      }
+      .mobile-menu ul {
+        list-style: none;
+        padding: 20px 0;
+      }
+      .mobile-menu li {
+        padding: 15px 20px;
+        border-bottom: 1px solid #e5e7eb;
+      }
+      .mobile-menu a {
+        text-decoration: none;
+        font-weight: 600;
+        display: block;
+      }
+    </style>
+  </head>
+  <body class="font-poppins">
+    <!-- Nav Bar -->
+    <nav
+      class="p-3 flex justify-between items-center bg-white position: sticky top-0 z-10"
+    >
+      <a href="index.html" class="text-3xl font-extrabold text-pink-500">Nostra</a>
+
+      <svg
+        id="menuicon"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        class="w-8 h-8 md:hidden text-pink-500"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+        />
+      </svg>
+
+      <ul class="flex gap-10 text-gray-600 hidden md:flex">
+        <li>
+          <a href="index.html" class="hover:underline hover:text-black text-pink-500">Home</a>
+        </li>
+        <li>
+          <a
+            href="index.html#new-arrivals-section"
+            class="hover:underline hover:text-black text-purple-500"
+            >New Arrival</a
+          >
+        </li>
+        <li>
+          <a
+            href="index.html#most-wanted-section"
+            class="hover:underline hover:text-black text-pink-500"
+            >Most Wanted</a
+          >
+        </li>
+        <li>
+          <a
+            href="collections.html"
+            class="hover:underline hover:text-black text-purple-500"
+            >Collections</a
+          >
+        </li>
+        <li>
+          <a
+            href="contact.html"
+            class="hover:underline hover:text-black text-pink-500"
+            >Contact Us</a
+          >
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay" id="menuOverlay"></div>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+      <ul>
+        <li>
+          <a href="index.html" class="text-pink-500">Home</a>
+        </li>
+        <li>
+          <a href="index.html#new-arrivals-section" class="text-purple-500">New Arrival</a>
+        </li>
+        <li>
+          <a href="index.html#most-wanted-section" class="text-pink-500">Most Wanted</a>
+        </li>
+        <li>
+          <a href="collections.html" class="text-purple-500">Collections</a>
+        </li>
+        <li>
+          <a href="contact.html" class="text-pink-500">Contact Us</a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Collections/Products Section -->
+    <section class="bg-white py-8">
+      <div class="max-w-7xl mx-auto px-4">
+        <!-- Search Bar -->
+        <div class="mb-8">
+          <div class="flex items-center bg-gray-100 rounded-lg px-4 py-3">
+            <input
+              type="text"
+              id="searchInput"
+              placeholder="Search"
+              class="bg-gray-100 outline-none flex-1 text-gray-700"
+            />
+            <i class="fas fa-search text-gray-500 cursor-pointer"></i>
+          </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex gap-8">
+          <!-- Sidebar Filters -->
+          <aside class="filter-section w-56 flex-shrink-0">
+            <!-- Occasion Filter -->
+            <div class="mb-8">
+              <h3 class="text-xl font-bold mb-4 text-gray-800">Occasion</h3>
+              <div class="space-y-3">
+                <label class="flex items-center gap-2 cursor-pointer">
+                  <input type="checkbox" class="checkbox-custom" value="summer" />
+                  <span class="text-gray-700">Summer</span>
+                </label>
+                <label class="flex items-center gap-2 cursor-pointer">
+                  <input type="checkbox" class="checkbox-custom" value="party" />
+                  <span class="text-gray-700">Party</span>
+                </label>
+                <label class="flex items-center gap-2 cursor-pointer">
+                  <input type="checkbox" class="checkbox-custom" value="beach" />
+                  <span class="text-gray-700">Beach</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Colors Filter -->
+            <div class="mb-8">
+              <h3 class="text-xl font-bold mb-4 text-gray-800">Colors</h3>
+              <div class="space-y-3">
+                <label class="flex items-center gap-2 cursor-pointer">
+                  <input type="checkbox" class="checkbox-custom" value="red" />
+                  <span class="text-gray-700">Red</span>
+                </label>
+                <label class="flex items-center gap-2 cursor-pointer">
+                  <input type="checkbox" class="checkbox-custom" value="blue" />
+                  <span class="text-gray-700">Blue</span>
+                </label>
+                <label class="flex items-center gap-2 cursor-pointer">
+                  <input type="checkbox" class="checkbox-custom" value="white" />
+                  <span class="text-gray-700">White</span>
+                </label>
+                <label class="flex items-center gap-2 cursor-pointer">
+                  <input type="checkbox" class="checkbox-custom" value="green" />
+                  <span class="text-gray-700">Green</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Arrivals Filter -->
+            <div class="mb-8">
+              <h3 class="text-xl font-bold mb-4 text-gray-800">Arrivals</h3>
+              <div class="space-y-3">
+                <label class="flex items-center gap-2 cursor-pointer">
+                  <input type="checkbox" class="checkbox-custom" value="new" />
+                  <span class="text-gray-700">New Arrival</span>
+                </label>
+                <label class="flex items-center gap-2 cursor-pointer">
+                  <input type="checkbox" class="checkbox-custom" value="trending" />
+                  <span class="text-gray-700">Trending</span>
+                </label>
+                <label class="flex items-center gap-2 cursor-pointer">
+                  <input type="checkbox" class="checkbox-custom" value="sale" />
+                  <span class="text-gray-700">On Sale</span>
+                </label>
+              </div>
+            </div>
+          </aside>
+
+          <!-- Products Grid -->
+          <div class="flex-1">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <!-- Product 1 -->
+              <div class="product-item" data-occasion="summer" data-color="yellow" data-arrival="new">
+                <div class="product-card-img rounded-lg">
+                  <img src="./images/newarrival1.jpg" alt="Floral Summer Shirt" />
+                </div>
+                <h4 class="text-lg font-bold mt-4 text-gray-800">Floral Summer Shirt</h4>
+                <p class="text-gray-600 font-semibold">₹220</p>
+              </div>
+
+              <!-- Product 2 -->
+              <div class="product-item" data-occasion="summer" data-color="green" data-arrival="trending">
+                <div class="product-card-img rounded-lg">
+                  <img src="./images/newarrival2.jpg" alt="Summer Green" />
+                </div>
+                <h4 class="text-lg font-bold mt-4 text-gray-800">Summer Green</h4>
+                <p class="text-gray-600 font-semibold">₹260</p>
+              </div>
+
+              <!-- Product 3 -->
+              <div class="product-item" data-occasion="party" data-color="red" data-arrival="new">
+                <div class="product-card-img rounded-lg">
+                  <img src="./images/newarrival3.jpg" alt="Party Floral Shirt" />
+                </div>
+                <h4 class="text-lg font-bold mt-4 text-gray-800">Party Floral Shirt</h4>
+                <p class="text-gray-600 font-semibold">₹399</p>
+              </div>
+
+              <!-- Product 4 -->
+              <div class="product-item" data-occasion="summer" data-color="white" data-arrival="sale">
+                <div class="product-card-img rounded-lg">
+                  <img src="./images/newarrival4.jpg" alt="Casual Floral" />
+                </div>
+                <h4 class="text-lg font-bold mt-4 text-gray-800">Casual Floral</h4>
+                <p class="text-gray-600 font-semibold">₹280</p>
+              </div>
+
+              <!-- Product 5 -->
+              <div class="product-item" data-occasion="party" data-color="blue" data-arrival="trending">
+                <div class="product-card-img rounded-lg">
+                  <img src="./images/mostwanted1.jpg" alt="Navy Floral" />
+                </div>
+                <h4 class="text-lg font-bold mt-4 text-gray-800">Navy Floral</h4>
+                <p class="text-gray-600 font-semibold">₹320</p>
+              </div>
+
+              <!-- Product 6 -->
+              <div class="product-item" data-occasion="beach" data-color="blue" data-arrival="new">
+                <div class="product-card-img rounded-lg">
+                  <img src="./images/mostwanted2.jpg" alt="Trendy Casual" />
+                </div>
+                <h4 class="text-lg font-bold mt-4 text-gray-800">Trendy Casual</h4>
+                <p class="text-gray-600 font-semibold">₹290</p>
+              </div>
+
+              <!-- Product 7 -->
+              <div class="product-item" data-occasion="summer" data-color="red" data-arrival="trending">
+                <div class="product-card-img rounded-lg">
+                  <img src="./images/mostwanted3.jpg" alt="Summer Blossom" />
+                </div>
+                <h4 class="text-lg font-bold mt-4 text-gray-800">Summer Blossom</h4>
+                <p class="text-gray-600 font-semibold">₹350</p>
+              </div>
+
+              <!-- Product 8 -->
+              <div class="product-item" data-occasion="beach" data-color="white" data-arrival="sale">
+                <div class="product-card-img rounded-lg">
+                  <img src="./images/mostwanted4.jpg" alt="Beach Essential" />
+                </div>
+                <h4 class="text-lg font-bold mt-4 text-gray-800">Beach Essential</h4>
+                <p class="text-gray-600 font-semibold">₹275</p>
+              </div>
+
+              <!-- Product 9 -->
+              <div class="product-item" data-occasion="party" data-color="red" data-arrival="sale">
+                <div class="product-card-img rounded-lg">
+                  <img src="./images/mostwanted5.jpg" alt="Party Perfect" />
+                </div>
+                <h4 class="text-lg font-bold mt-4 text-gray-800">Party Perfect</h4>
+                <p class="text-gray-600 font-semibold">₹380</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-section px-6 py-12 bg-purple-200 mt-16">
+      <div class="max-w-6xl mx-auto text-pink-500">
+        <h1 class="footer-logo text-4xl font-extrabold mb-4 text-pink-500">Nostra</h1>
+        <p class="footer-desc text-xl mb-6 text-pink-500">The Standard chunk of Lorem ipsum used since the 1500s is reproduced below for those interest</p>
+
+        <div class="footer-social flex items-center gap-8 mb-8 text-pink-500">
+          <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+        </div>
+
+        <div class="footer-copy text-2xl">@ 2026 Nostra.com</div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+    
+    <script>
+      // Get all filter elements
+      const searchInput = document.getElementById('searchInput');
+      const filterCheckboxes = document.querySelectorAll('.checkbox-custom');
+      const productItems = document.querySelectorAll('.product-item');
+
+      // Function to filter products
+      function filterProducts() {
+        const searchTerm = searchInput.value.toLowerCase();
+        
+        // Get all checked filters
+        const selectedFilters = {
+          occasion: [],
+          color: [],
+          arrival: []
+        };
+
+        filterCheckboxes.forEach(checkbox => {
+          if (checkbox.checked) {
+            const value = checkbox.value;
+            if (['summer', 'party', 'beach'].includes(value)) {
+              selectedFilters.occasion.push(value);
+            } else if (['red', 'blue', 'white', 'green', 'yellow'].includes(value)) {
+              selectedFilters.color.push(value);
+            } else if (['new', 'trending', 'sale'].includes(value)) {
+              selectedFilters.arrival.push(value);
+            }
+          }
+        });
+
+        // Filter products
+        productItems.forEach(product => {
+          let showProduct = true;
+
+          // Check search term
+          const productName = product.querySelector('h4').textContent.toLowerCase();
+          if (searchTerm && !productName.includes(searchTerm)) {
+            showProduct = false;
+          }
+
+          // Check occasion filter
+          if (selectedFilters.occasion.length > 0) {
+            const productOccasion = product.getAttribute('data-occasion');
+            if (!selectedFilters.occasion.includes(productOccasion)) {
+              showProduct = false;
+            }
+          }
+
+          // Check color filter
+          if (selectedFilters.color.length > 0) {
+            const productColor = product.getAttribute('data-color');
+            if (!selectedFilters.color.includes(productColor)) {
+              showProduct = false;
+            }
+          }
+
+          // Check arrival filter
+          if (selectedFilters.arrival.length > 0) {
+            const productArrival = product.getAttribute('data-arrival');
+            if (!selectedFilters.arrival.includes(productArrival)) {
+              showProduct = false;
+            }
+          }
+
+          // Show or hide product
+          product.style.display = showProduct ? 'block' : 'none';
+        });
+      }
+
+      // Add event listeners
+      searchInput.addEventListener('input', filterProducts);
+      filterCheckboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', filterProducts);
+      });
+
+      // Mobile Menu Toggle
+      const menuIcon = document.getElementById('menuicon');
+      const mobileMenu = document.getElementById('mobileMenu');
+      const menuOverlay = document.getElementById('menuOverlay');
+
+      // Toggle menu when hamburger icon is clicked
+      menuIcon.addEventListener('click', () => {
+        mobileMenu.classList.toggle('active');
+        menuOverlay.classList.toggle('active');
+      });
+
+      // Close menu when overlay is clicked
+      menuOverlay.addEventListener('click', () => {
+        mobileMenu.classList.remove('active');
+        menuOverlay.classList.remove('active');
+      });
+
+      // Close menu when a link is clicked
+      const mobileMenuLinks = document.querySelectorAll('.mobile-menu a');
+      mobileMenuLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.remove('active');
+          menuOverlay.classList.remove('active');
+        });
+      });
+    </script>
+  </body>
+</html>
